@@ -11,6 +11,7 @@ An optimized OWASP ZAP automation tool that allows you to run security scans fro
 - **Parallel Report Generation**: Generate reports in multiple formats simultaneously
 - **Memory Caching**: Uses LRU cache for frequently accessed operations
 - **Better Logging**: Comprehensive logging with configurable verbosity
+- **Cross-Platform Compatibility**: Tested on Windows and Kali Linux
 
 ## Installation
 
@@ -72,3 +73,25 @@ python zap-optimized-cli.py -t https://example.com --decibel
 - Use `--memory` to set appropriate memory allocation based on your system resources
 - Adjust `--threads` based on your system's CPU capabilities and network bandwidth
 - For large applications, increase timeout values with `-s` and `-c`
+
+## Compatibility Notes
+
+### Kali Linux / Python 3.11+
+
+This tool has been specifically updated to work properly on Kali Linux with Python 3.11+. The following issues have been addressed:
+
+1. **Event Loop Handling**: Fixed asyncio implementation to properly create and manage event loops, preventing the `asyncio/runners.py` errors that can occur in Python 3.11.
+
+2. **Dictionary Parameter Handling**: Removed LRU caching from functions that accept dictionary parameters to prevent `TypeError: unhashable type: 'dict'` errors.
+
+## Troubleshooting
+
+If you encounter any issues running the tool:
+
+1. **Permission Errors**: Ensure you have the necessary permissions to execute the script and access the ZAP binary.
+
+2. **ZAP Not Found**: Use the `--zap-path` parameter to explicitly specify the location of your ZAP installation.
+
+3. **Port Already in Use**: If port 8080 is already in use, specify a different port with the `--port` parameter.
+
+4. **Memory Issues**: If ZAP crashes due to insufficient memory, try allocating more memory with the `--memory` parameter (e.g., `--memory 2G`).
