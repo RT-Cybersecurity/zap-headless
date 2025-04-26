@@ -1,4 +1,4 @@
-# ZAP headless Optimized CLI Tool
+# ZAP Automation Optimized CLI Tool
 
 An optimized OWASP ZAP automation tool that allows you to run security scans from the command line with enhanced performance and additional features.
 
